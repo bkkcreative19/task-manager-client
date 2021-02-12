@@ -16,7 +16,9 @@ function App(props) {
 
   useEffect(() => {
     const getStuff = async () => {
-      const { data } = await axios.get("/api");
+      const { data } = await axios.get(
+        "https://task-manager-api-mern.herokuapp.com/api"
+      );
       console.log(data);
     };
     getStuff();
