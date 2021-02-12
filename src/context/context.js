@@ -13,7 +13,7 @@ const MyContext = ({ children }) => {
 
   const register = async (data) => {
     const res = await axios.post(
-      "/api/signup",
+      "https://task-manager-api-mern.herokuapp.com/api/signup",
       {
         email: data.email,
         password: data.password,
@@ -25,7 +25,7 @@ const MyContext = ({ children }) => {
 
   const login = async (data, props) => {
     const res = await axios.post(
-      "/api/signin",
+      "https://task-manager-api-mern.herokuapp.com/api/signin",
       {
         email: data.email,
         password: data.password,
@@ -51,7 +51,10 @@ const MyContext = ({ children }) => {
         "x-access-token": localStorage.getItem("accessToken"),
       },
     };
-    const { data } = await axios.get("/api/lists", config);
+    const { data } = await axios.get(
+      "https://task-manager-api-mern.herokuapp.com/api/lists",
+      config
+    );
     setLists(data);
   };
 
@@ -62,7 +65,10 @@ const MyContext = ({ children }) => {
       },
     };
 
-    const { data } = await axios.get(`/api/lists/${list}/tasks`, config);
+    const { data } = await axios.get(
+      `https://task-manager-api-mern.herokuapp.com/api/lists/${list}/tasks`,
+      config
+    );
     setTasks(data);
   };
 
@@ -74,7 +80,7 @@ const MyContext = ({ children }) => {
     };
 
     const { data } = await axios.post(
-      "/api/lists",
+      "https://task-manager-api-mern.herokuapp.com/api/lists",
       {
         title: list,
       },
@@ -91,7 +97,7 @@ const MyContext = ({ children }) => {
     };
 
     const { data } = await axios.post(
-      `/api/lists/${listId}/tasks`,
+      `https://task-manager-api-mern.herokuapp.com/api/lists/${listId}/tasks`,
       {
         title: task,
       },
@@ -108,7 +114,7 @@ const MyContext = ({ children }) => {
     };
 
     const { data } = await axios.delete(
-      ` /api/lists/${listId}`,
+      ` https://task-manager-api-mern.herokuapp.com/api/lists/${listId}`,
 
       config
     );
@@ -123,7 +129,7 @@ const MyContext = ({ children }) => {
     };
 
     const { data } = await axios.patch(
-      ` /api/lists/${listId}`,
+      ` https://task-manager-api-mern.herokuapp.com/api/lists/${listId}`,
       {
         title,
       },
@@ -141,7 +147,7 @@ const MyContext = ({ children }) => {
     };
 
     const { data } = await axios.delete(
-      ` /api/lists/${listId}/tasks/${taskId}`,
+      ` https://task-manager-api-mern.herokuapp.com/api/lists/${listId}/tasks/${taskId}`,
 
       config
     );
@@ -156,7 +162,7 @@ const MyContext = ({ children }) => {
     };
 
     const { data } = await axios.patch(
-      ` /api/lists/${listId}/tasks/${taskId}`,
+      ` https://task-manager-api-mern.herokuapp.com/api/lists/${listId}/tasks/${taskId}`,
       {
         title,
       },
