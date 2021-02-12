@@ -16,7 +16,7 @@ function App(props) {
 
   useEffect(() => {
     const getStuff = async () => {
-      const { data } = await axios.get("/");
+      const { data } = await axios.get("/api");
       console.log(data);
     };
     getStuff();
