@@ -33,7 +33,7 @@ const MyContext = ({ children }) => {
       { headers: { "Content-Type": "application/json" } }
     );
     const headers = res.headers;
-    console.log(headers["x-access-token"]);
+    console.log(res);
     localStorage.setItem("accessToken", headers["x-access-token"]);
     localStorage.setItem("refreshToken", headers["x-refresh-token"]);
     setIsSignedIn(true);
