@@ -9,9 +9,18 @@ import Register from "./pages/Register";
 import { Context } from "./context/context";
 import EditList from "./components/EditList";
 import EditTask from "./components/EditTask";
+import axios from "axios";
 
 function App(props) {
   const { isSignedIn, setCurrentList } = useContext(Context);
+
+  useEffect(() => {
+    const getStuff = async () => {
+      const { data } = await axios.get("/");
+      console.log(data);
+    };
+    getStuff();
+  }, []);
 
   return (
     <div className="app">
