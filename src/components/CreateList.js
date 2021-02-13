@@ -1,28 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Context } from "../context/context";
 import { withRouter } from "react-router-dom";
 
 const CreateList = (props) => {
-  const {
-    createNewList,
-    listName,
-    setListName,
-    listId,
-    setListId,
-  } = useContext(Context);
-  // const [listName, setListName] = useState("");
-  // const [listId, setListId] = useState("");
+  const { createNewList, listName, setListName } = useContext(Context);
 
   const handleCreateNewList = async (e) => {
     e.preventDefault();
     const res = await createNewList(listName, props);
-    setListId(res._id);
+
     props.history.push(`/lists/${res._id}`);
   };
 
-  useEffect(() => {
-    // props.history.push(`/lists/${listId}`);
-  }, [listId]);
   return (
     <div className="create-list">
       <form onSubmit={handleCreateNewList} className="create-list__form">

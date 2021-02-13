@@ -1,11 +1,11 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 
 import Lists from "../components/Lists";
 import Tasks from "../components/Tasks";
 import { Context } from "../context/context";
 
-const Main = () => {
-  const { lists } = useContext(Context);
+const Main = (props) => {
+  const { lists, logout } = useContext(Context);
 
   return (
     <div className="main">
@@ -16,6 +16,9 @@ const Main = () => {
         ) : (
           <Tasks />
         )}
+        <button className="logout" onClick={() => logout(props)}>
+          Log Out
+        </button>
       </div>
     </div>
   );

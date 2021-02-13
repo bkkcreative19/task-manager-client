@@ -6,10 +6,8 @@ const Context = React.createContext("");
 const MyContext = ({ children }) => {
   const [lists, setLists] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [isSignedIn, setIsSignedIn] = useState(false);
+
   const [listName, setListName] = useState("");
-  const [listId, setListId] = useState("");
-  // const [currentList, setCurrentList] = useState("");
 
   const register = async (data) => {
     const res = await axios.post(
@@ -35,13 +33,13 @@ const MyContext = ({ children }) => {
 
     localStorage.setItem("accessToken", res.data.xAccessToken);
     localStorage.setItem("refreshToken", res.data.xRefreshToken);
-    setIsSignedIn(true);
+
     props.history.push("/lists");
   };
   const logout = async (props) => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
-    setIsSignedIn(false);
+
     props.history.push("/");
   };
 
@@ -185,13 +183,10 @@ const MyContext = ({ children }) => {
         deleteTask,
         updateTask,
         lists,
-        isSignedIn,
         tasks,
         deleteList,
         listName,
         setListName,
-        listId,
-        setListId,
       }}
     >
       {children}
